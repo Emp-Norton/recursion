@@ -1,5 +1,4 @@
 var stringifyJSON = function(obj) {
-	console.log(obj)
 	var constructedJSON = [];
 	var primString = '';
 	var primitives = [Number, String, Boolean]
@@ -29,6 +28,7 @@ var stringifyJSON = function(obj) {
 		  var keys = Object.keys(obj)
 			if (keys.length){
         for (var key in obj){
+        	if (key !== "functions" && key !== "undefined")
           constructedJSON.push(`"${key}":${stringifyJSON(obj[key])}`);
         }
 			} else { // empty object
